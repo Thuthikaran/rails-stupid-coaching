@@ -1,17 +1,19 @@
 <% @search = params[:question] %>
 
-<%= @search %>
-<p><%= "-You" %></p>
+<div class="container">
+  <p><span class="text-muted">- Your question:</span> <%= @search %></p>
+  
+  <div class="alert alert-info" role="alert">
+    <% if @search == "I am going to work" %>
+      Great
+    <% elsif @search.end_with?("?") %>
+      Silly question, get dressed and go to work!
+    <% else %>
+      I don't care, get dressed and go to work!
+    <% end %>
+    <span class="text-muted">- Your Coach</span>
+  </div>
+  
+  <%= link_to("Ask a new question", ask_path, class: "btn btn-primary") %>
+</div>
 
-<% if @search == "I am going to work" %>
-  <%= "Great" %>
-  <%= "-Your Coach" %>
-<% elsif @search.end_with?("?") %>
-  <%= "Silly question, get dressed and go to work!" %>
-  <%= "-Your Coach" %>
-<% else %>
-  <%= "I don't care, get dressed and go to work!" %>
-  <%= "-Your Coach" %>
-<% end %>
-
-<%= link_to("Ask a new question", ask_path) %>
