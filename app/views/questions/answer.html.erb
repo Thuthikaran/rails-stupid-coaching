@@ -1,5 +1,17 @@
 <% @search = params[:question] %>
 
 <%= @search %>
+<p><%= "-You" %></p>
+
+<% if @search == "I am going to work" %>
+  <%= "Great" %>
+  <%= "-Your Coach" %>
+<% elsif @search.end_with?("?") %>
+  <%= "Silly question, get dressed and go to work!" %>
+  <%= "-Your Coach" %>
+<% else %>
+  <%= "I don't care, get dressed and go to work!" %>
+  <%= "-Your Coach" %>
+<% end %>
 
 <%= link_to("Ask a new question", ask_path) %>
